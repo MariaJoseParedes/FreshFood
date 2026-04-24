@@ -1,24 +1,23 @@
 # FreshFood
 
-### Descripción;
+#### Descripción
 Aplicación diseñada para ayudar a las personas a organizar sus alimentos en la despensa y el refrigerador, promoviendo un consumo responsable y reduciendo el desperdicio.
-Objetivo principal:  
+#### Objetivo principal  
 Facilitar que el usuario mantenga un orden en los productos almacenados en su hogar y reciba notificaciones cuando un alimento esté próximo a vencer, con varios días de anticipación.
 
-#### Caracteristicas propias del móvil:
+#### Caracteristicas propias del móvil
 * Uso de cámara para escaneo.
 * Notificaciones push locales
 
 #### Historias de usuario:
 
-US-001: Agregar producto escaneando QR
-US-002: Escribir fecha manualmente
-US-003: Ver lista de productos
-US-007: Recibir notificaciones de vencimiento
-US-004: Editar información de producto
-US-005: Eliminar/marcar como consumido
-US-006: Escanear fecha con OCR
-US-008: Personalizar hora de notificaciones
+* US-001: Como usuario quiero agregar producto escaneando QR para facilitarme el tiempo de escribir
+* US-002: Como usuario necesito poder escribir fecha manualmente para frutas/verduras
+* US-003: Como usuario quiero ver la lista de productos para no mezclar productos de diferente tipo
+* US-004: Como usuario espero recibir notificaciones de vencimiento dias antes para no desperdiciar comida
+* US-005: Como usuario quiero editar información erronea de un producto para no cunfundirme 
+* US-006: Como usuario me gustaria eliminar/marcar como consumido para no seguir recibiendo notificaciones de ese producto
+* US-007: Como usuario me gustaria poder personalizar hora de notificaciones para que no se vuelva estresante
 
 #### Requerimientos RNF
 * Compatibilidad con versiones superiores
