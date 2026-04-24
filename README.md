@@ -1,17 +1,41 @@
-# mi_app
+FreshFood
 
-A new Flutter project.
+Descripción;
+Aplicación diseñada para ayudar a las personas a organizar sus alimentos en la despensa y el refrigerador, promoviendo un consumo responsable y reduciendo el desperdicio.
+Objetivo principal:  
+Facilitar que el usuario mantenga un orden en los productos almacenados en su hogar y reciba notificaciones cuando un alimento esté próximo a vencer, con varios días de anticipación.
 
-## Getting Started
+Caracteristicas propias del móvil:
+-Uso de cámara para escaneo.
+-Notificaciones push locales
 
-This project is a starting point for a Flutter application.
+Historias de usuario:
 
-A few resources to get you started if this is your first Flutter project:
+US-001: Agregar producto escaneando QR
+US-002: Escribir fecha manualmente
+US-003: Ver lista de productos
+US-007: Recibir notificaciones de vencimiento
+US-004: Editar información de producto
+US-005: Eliminar/marcar como consumido
+US-006: Escanear fecha con OCR
+US-008: Personalizar hora de notificaciones
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Requerimientos RNF
+-Compatibilidad con versiones superiores
+-Agregar productos en poco tiempo
+-Escalabilidad, muchos usuarios
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Requerimientos RF
+-Agregar productos con escaneo 
+-Visualizar productos en una lista 
+-Editar productos o modificar cualquier campo
+-Entregar notificaciones con alertas
+-OCR para detectar fechas en etiquetas
+-Encriptación de datos
+
+Diagrama de flujo: https://mermaid.ai/d/7832c19f-835c-4de8-adb6-ffc117a63b99 
+
+[RESEARCH.md](./RESEARCH.md)
+
+
+
