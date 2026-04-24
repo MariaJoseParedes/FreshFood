@@ -11,7 +11,7 @@ Facilitar que el usuario mantenga un orden en los productos almacenados en su ho
 
 #### Historias de usuario:
 
-* US-001: Como usuario quiero agregar producto escaneando QR para facilitarme el tiempo de escribir
+* US-001: Como usuario quiero agregar producto escaneando el codigo de barras para facilitarme el tiempo de escribir
 * US-002: Como usuario necesito poder escribir fecha manualmente para frutas/verduras
 * US-003: Como usuario quiero ver la lista de productos para no mezclar productos de diferente tipo
 * US-004: Como usuario espero recibir notificaciones de vencimiento dias antes para no desperdiciar comida
