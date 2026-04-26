@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'screens/menu.dart';
+//import 'screens/menu.dart';
+import 'screens/abrir_app.dart';
+
 
 var logger = Logger();
 
@@ -19,17 +21,17 @@ class MyApp extends StatelessWidget {
       title: 'FreshFood',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 39, 85, 41),
-          primary: const Color.fromARGB(255, 38, 83, 40),
-          secondary: const Color.fromARGB(255, 36, 82, 43),
+          seedColor: const Color.fromARGB(255, 220, 247, 221),
+          primary: const Color.fromARGB(255, 226, 250, 228),
+          secondary: const Color.fromARGB(255, 241, 253, 242),
         ),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 59, 109, 78),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 243, 255, 248),
         textTheme: const TextTheme(
           bodyMedium: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
         ),
         useMaterial3: true,
       ),
-      home: const Menu(),
+      home: const LoadingScreen(),
     );
   }
 }

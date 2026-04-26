@@ -41,7 +41,7 @@ class Menu extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 8, 8, 8),
                 ),
               ),
             ),
@@ -67,7 +67,7 @@ class Menu extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 14, 13, 13),
                 ),
               ),
             ),
