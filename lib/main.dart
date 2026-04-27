@@ -3,7 +3,6 @@ import 'package:logger/logger.dart';
 //import 'screens/menu.dart';
 import 'screens/abrir_app.dart';
 
-
 var logger = Logger();
 
 void main() {
@@ -21,8 +20,8 @@ class MyApp extends StatelessWidget {
       title: 'FreshFood',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 220, 247, 221),
-          primary: const Color.fromARGB(255, 226, 250, 228),
+          seedColor: const Color.fromARGB(255, 255, 255, 255),
+          primary: const Color.fromARGB(255, 235, 245, 236),
           secondary: const Color.fromARGB(255, 241, 253, 242),
         ),
         scaffoldBackgroundColor: const Color.fromARGB(255, 243, 255, 248),
