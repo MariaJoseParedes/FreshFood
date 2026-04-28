@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
-class Refrigerador extends StatefulWidget {
-  const Refrigerador({super.key});
+class Despensa extends StatefulWidget {
+  const Despensa({super.key});
 
   @override
-  State<Refrigerador> createState() => _RefrigeradorState();
+  State<Despensa> createState() => _DespensaState();
 }
 
-class _RefrigeradorState extends State<Refrigerador> {
-  // Lista de productos en el refrigerador
+class _DespensaState extends State<Despensa> {
+  // Lista de productos en la despensa
   List<Map<String, String>> productos = [
-    {'nombre': 'Leche', 'fecha': '26 Abr'},
-    {'nombre': 'Yogurt', 'fecha': '27 Abr'},
-    {'nombre': 'Jamón', 'fecha': '28 Abr'},
-    {'nombre': 'Queso', 'fecha': '29 Abr'},
-    {'nombre': 'Mantequilla', 'fecha': '30 Abr'},
+    {'nombre': 'Arroz', 'fecha': '26 Abr'},
+    {'nombre': 'Atún enlatado', 'fecha': '27 Abr'},
+    {'nombre': 'Tallarines', 'fecha': '28 Abr'},
+    {'nombre': 'Lentejas', 'fecha': '29 Abr'},
   ];
 
   void _agregarProducto() {
@@ -50,9 +49,7 @@ class _RefrigeradorState extends State<Refrigerador> {
               child: const Text('Cancelar'),
             ),
             TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: const Color.fromARGB(255, 0, 0, 0),
-              ),
+              style: TextButton.styleFrom(foregroundColor: Colors.green),
               onPressed: () {
                 if (nombreController.text.isNotEmpty &&
                     fechaController.text.isNotEmpty) {
@@ -110,9 +107,7 @@ class _RefrigeradorState extends State<Refrigerador> {
               child: const Text('Cancelar'),
             ),
             TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: const Color.fromARGB(255, 0, 0, 0),
-              ),
+              style: TextButton.styleFrom(foregroundColor: const Color.fromARGB(255, 0, 0, 0)),
               onPressed: () {
                 if (nombreController.text.isNotEmpty &&
                     fechaController.text.isNotEmpty) {
@@ -168,8 +163,8 @@ class _RefrigeradorState extends State<Refrigerador> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Refrigerador'),
-        backgroundColor: const Color.fromARGB(255, 235, 221, 236),
+        title: const Text('Despensa'),
+        backgroundColor: const Color.fromARGB(255, 177, 180, 240),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -177,7 +172,7 @@ class _RefrigeradorState extends State<Refrigerador> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Productos en el Refrigerador',
+              'Productos en la Despensa',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
@@ -187,7 +182,7 @@ class _RefrigeradorState extends State<Refrigerador> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: const Color.fromARGB(255, 240, 210, 210),
+                    color: const Color.fromARGB(255, 210, 210, 240),
                   ),
                   boxShadow: [
                     BoxShadow(
@@ -208,7 +203,7 @@ class _RefrigeradorState extends State<Refrigerador> {
                       child: ListTile(
                         dense: true,
                         leading: const Icon(
-                          Icons.kitchen,
+                          Icons.inventory,
                           color: Color.fromARGB(255, 57, 50, 58),
                         ),
                         title: Text(
@@ -267,7 +262,7 @@ class _RefrigeradorState extends State<Refrigerador> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _agregarProducto,
-        backgroundColor: const Color.fromARGB(255, 193, 170, 196),
+        backgroundColor: const Color.fromARGB(255, 177, 180, 240),
         child: const Icon(Icons.add),
       ),
     );

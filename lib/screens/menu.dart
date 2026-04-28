@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'refrigerador.dart';
+import 'despensa.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -158,8 +159,11 @@ class Menu extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Abriendo Despensa...')),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Despensa(),
+                          ),
                         );
                       },
                       child: const Text(
