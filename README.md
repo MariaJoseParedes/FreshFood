@@ -32,6 +32,19 @@ Facilitar que el usuario mantenga un orden en los productos almacenados en su ho
 * OCR para detectar fechas en etiquetas
 * Encriptación de datos
 
+#### Instrucciones de uso
+* inicio y carga:
+  - Al abrir la aplicacion verás un icono y un indicador de carga, luego de 3 segundos entrarás al menu automaticamente.
+* Menú principal:
+  - Revisa la sección "Próximos a vencer" para ver qué alimentos debes consumir pronto.   
+  - Botón refrigerador para gestionar los productos fríos.
+  - Botón despensa para gestionar alimentos no perecibles o que no requieran refrigeración.
+* Gestión del refrigerador:
+  - Podrás visualizar la lista completa de productos guardados con sus respectivas fechas de vencimiento.
+  - Presiona un producto para abrir una ventana emergente con informacion detallada.
+  - Vuelve al menú utilizando la flecha superior izquierda. 
+
+
 Diagrama de flujo: [Diagrama](https://mermaid.ai/d/7832c19f-835c-4de8-adb6-ffc117a63b99)
 
 [RESEARCH.md](./RESEARCH.md)
