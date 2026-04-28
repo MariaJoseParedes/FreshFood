@@ -39,9 +39,12 @@ Facilitar que el usuario mantenga un orden en los productos almacenados en su ho
   - Revisa la sección "Próximos a vencer" para ver qué alimentos debes consumir pronto.   
   - Botón refrigerador para gestionar los productos fríos.
   - Botón despensa para gestionar alimentos no perecibles o que no requieran refrigeración.
-* Gestión del refrigerador:
+* Gestión del refrigerador o despensa:
   - Podrás visualizar la lista completa de productos guardados con sus respectivas fechas de vencimiento.
+  - Presiona el botón flotante (+) en la esquina inferior derecha para poder ingresar el nombre y la fecha de vencimiento de tu nuevo producto.
   - Presiona un producto para abrir una ventana emergente con informacion detallada.
+  - Presiona el icono de lapiz para poder editar tu producto y luego en "guardar" para confirmar la acción.
+  - Presiona el icono de papelera para poder eliminar el producto seleccionado y luego en "eliminar" para confirmar la acción.
   - Vuelve al menú utilizando la flecha superior izquierda. 
 
 
