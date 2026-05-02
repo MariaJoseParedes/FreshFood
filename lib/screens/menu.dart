@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'refrigerador.dart';
 import 'despensa.dart';
+import 'about.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -17,27 +18,32 @@ class Menu extends StatelessWidget {
     ];
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'FreshFood',
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 0, 0, 0),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const About()),
+              );
+            },
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 50), // Espacio inicial
-            // Título principal
-            Padding(
-              padding: const EdgeInsets.only(right: 260),
-              child: // Alinea a la izquierda
-              const Text(
-                'FreshFood',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
+            const SizedBox(height: 20), // Espacio inicial
             // --- CUADRO DE PRODUCTOS POR VENCER ---
             Padding(
               padding: const EdgeInsets.only(
