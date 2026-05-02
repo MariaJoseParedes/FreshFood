@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   logger: ^2.7.0
   my_app: ^1.0.0
+  google_fonts: ^8.1.0
 
 dev_dependencies:
   flutter_test:

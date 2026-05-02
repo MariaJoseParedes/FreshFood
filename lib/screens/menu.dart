@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'refrigerador.dart';
 import 'despensa.dart';
 import 'about.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -70,7 +71,7 @@ class Menu extends StatelessWidget {
                 border: Border.all(color: Colors.grey.shade300),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: const Color.fromARGB(255, 14, 13, 13),
                     blurRadius: 10,
                   ),
                 ],
