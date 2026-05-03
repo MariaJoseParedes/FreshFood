@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/producto_tile.dart';
+import '../widgets/producto_dialog.dart';
 
 class Refrigerador extends StatefulWidget {
   const Refrigerador({super.key});
@@ -8,129 +10,31 @@ class Refrigerador extends StatefulWidget {
 }
 
 class _RefrigeradorState extends State<Refrigerador> {
-  // Lista de productos en el refrigerador
+  // Datos específicos del refrigerador
   List<Map<String, String>> productos = [
     {'nombre': 'Leche', 'fecha': '26 Abr'},
     {'nombre': 'Yogurt', 'fecha': '27 Abr'},
     {'nombre': 'Jamón', 'fecha': '28 Abr'},
-    {'nombre': 'Queso', 'fecha': '29 Abr'},
-    {'nombre': 'Mantequilla', 'fecha': '30 Abr'},
   ];
 
-  void _agregarProducto() {
-    final TextEditingController nombreController = TextEditingController();
-    final TextEditingController fechaController = TextEditingController();
-
-    showDialog(
+  void _gestionarProducto({int? index}) async {
+    final resultado = await showDialog<Map<String, String>>(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Agregar Producto'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nombreController,
-                decoration: const InputDecoration(
-                  labelText: 'Nombre del producto',
-                ),
-              ),
-              TextField(
-                controller: fechaController,
-                decoration: const InputDecoration(
-                  labelText: 'Fecha de vencimiento (ej: 26 Abr)',
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.red),
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancelar'),
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: const Color.fromARGB(255, 0, 0, 0),
-              ),
-              onPressed: () {
-                if (nombreController.text.isNotEmpty &&
-                    fechaController.text.isNotEmpty) {
-                  setState(() {
-                    productos.add({
-                      'nombre': nombreController.text,
-                      'fecha': fechaController.text,
-                    });
-                  });
-                  Navigator.of(context).pop();
-                }
-              },
-              child: const Text('Agregar'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _editarProducto(int index) {
-    final TextEditingController nombreController = TextEditingController(
-      text: productos[index]['nombre'],
-    );
-    final TextEditingController fechaController = TextEditingController(
-      text: productos[index]['fecha'],
+      builder: (context) => ProductoDialog(
+        nombreInicial: index != null ? productos[index]['nombre'] : null,
+        fechaInicial: index != null ? productos[index]['fecha'] : null,
+      ),
     );
 
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Editar Producto'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nombreController,
-                decoration: const InputDecoration(
-                  labelText: 'Nombre del producto',
-                ),
-              ),
-              TextField(
-                controller: fechaController,
-                decoration: const InputDecoration(
-                  labelText: 'Fecha de vencimiento (ej: 26 Abr)',
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.red),
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancelar'),
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: const Color.fromARGB(255, 0, 0, 0),
-              ),
-              onPressed: () {
-                if (nombreController.text.isNotEmpty &&
-                    fechaController.text.isNotEmpty) {
-                  setState(() {
-                    productos[index] = {
-                      'nombre': nombreController.text,
-                      'fecha': fechaController.text,
-                    };
-                  });
-                  Navigator.of(context).pop();
-                }
-              },
-              child: const Text('Guardar'),
-            ),
-          ],
-        );
-      },
-    );
+    if (resultado != null && resultado['nombre']!.isNotEmpty) {
+      setState(() {
+        if (index == null) {
+          productos.add(resultado);
+        } else {
+          productos[index] = resultado;
+        }
+      });
+    }
   }
 
   void _eliminarProducto(int index) {
@@ -138,24 +42,23 @@ class _RefrigeradorState extends State<Refrigerador> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Eliminar Producto'),
+          title: const Text('¿Eliminar producto?'),
           content: Text(
             '¿Estás seguro de que quieres eliminar "${productos[index]['nombre']}"?',
           ),
           actions: [
             TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.red),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.pop(context), // Cierra sin hacer nada
               child: const Text('Cancelar'),
             ),
             TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.red),
               onPressed: () {
                 setState(() {
                   productos.removeAt(index);
                 });
-                Navigator.of(context).pop();
+                Navigator.pop(context); // Cierra el diálogo después de eliminar
               },
+              style: TextButton.styleFrom(foregroundColor: Colors.red),
               child: const Text('Eliminar'),
             ),
           ],
@@ -169,6 +72,7 @@ class _RefrigeradorState extends State<Refrigerador> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Refrigerador'),
+        // Usamos el color específico que tenías para el refrigerador
         backgroundColor: const Color.fromARGB(255, 235, 221, 236),
       ),
       body: Padding(
@@ -182,91 +86,23 @@ class _RefrigeradorState extends State<Refrigerador> {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: const Color.fromARGB(255, 240, 210, 210),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 10,
-                    ),
-                  ],
-                ),
-                child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 15,
-                  ),
-                  itemCount: productos.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      margin: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: ListTile(
-                        dense: true,
-                        leading: const Icon(
-                          Icons.kitchen,
-                          color: Color.fromARGB(255, 57, 50, 58),
-                        ),
-                        title: Text(
-                          productos[index]['nombre']!,
-                          style: const TextStyle(fontWeight: FontWeight.w500),
-                        ),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.edit, color: Colors.blue),
-                              onPressed: () => _editarProducto(index),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.delete, color: Colors.red),
-                              onPressed: () => _eliminarProducto(index),
-                            ),
-                            Text(
-                              productos[index]['fecha']!,
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 124, 20, 12),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text(productos[index]['nombre']!),
-                                content: Text(
-                                  'Fecha de vencimiento: ${productos[index]['fecha']}',
-                                ),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text('Cerrar'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    );
-                  },
-                ),
+              child: ListView.builder(
+                itemCount: productos.length,
+                itemBuilder: (context, index) {
+                  return ProductoTile(
+                    nombre: productos[index]['nombre']!,
+                    fecha: productos[index]['fecha']!,
+                    onEdit: () => _gestionarProducto(index: index),
+                    onDelete: () => _eliminarProducto(index),
+                  );
+                },
               ),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _agregarProducto,
+        onPressed: () => _gestionarProducto(),
         backgroundColor: const Color.fromARGB(255, 193, 170, 196),
         child: const Icon(Icons.add),
       ),

@@ -20,12 +20,13 @@ class Menu extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'FreshFood',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 0, 0, 0),
+          style: GoogleFonts.skranji(
+            textStyle: TextStyle(
+              color: Color.fromARGB(255, 0, 0, 0),
+              fontSize: 28,
+            ),
           ),
         ),
         actions: [
@@ -71,7 +72,7 @@ class Menu extends StatelessWidget {
                 border: Border.all(color: Colors.grey.shade300),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color.fromARGB(255, 14, 13, 13),
+                    color: const Color.fromARGB(255, 182, 66, 66),
                     blurRadius: 10,
                   ),
                 ],
