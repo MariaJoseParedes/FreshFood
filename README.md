@@ -50,6 +50,16 @@ Facilitar que el usuario mantenga un orden en los productos almacenados en su ho
 
 Diagrama de flujo: [Diagrama](https://mermaid.ai/d/7832c19f-835c-4de8-adb6-ffc117a63b99)
 
+```mermaid
+flowchart TB
+    A["Agregar nuevo producto"] --> n1["Escanear código de barras del producto"]
+    n1 --> n2["Añadir fecha de vencimiento del producto"]
+    n2 --> n4["Guardar producto en base de datos local"]
+    n4 --> n5["Monitoreo fechas de vencimientos"]
+    n5 --> n7["Recibir notificacion del proximo producto a vencer"]
+    n8["Abrir aplicación"] --> A
+```
+
 [RESEARCH.md](./RESEARCH.md)
 
 
