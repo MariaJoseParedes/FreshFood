@@ -24,18 +24,53 @@ class Menu extends StatelessWidget {
             textStyle: const TextStyle(color: Colors.black, fontSize: 28),
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.info_outline),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const About()),
-              );
-            },
-          ),
-        ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 50, 112, 65),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'assets/images/perfil.jpg',
+                    width: 50,
+                    height: 50,
+                  ),
+
+                  SizedBox(height: 10),
+                  Text(
+                    'Usuario',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Configuración'),
+              onTap: () {
+                // pantalla de configuración
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: const Text('Acerca de FreshFood'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const About()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
