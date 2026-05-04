@@ -7,11 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 class Menu extends StatelessWidget {
   const Menu({super.key});
 
-  //get child => null;
-
   @override
   Widget build(BuildContext context) {
-    // Lista de ejemplo de productos
     final List<Map<String, String>> productosPorVencer = [
       {'nombre': 'Leche', 'fecha': '26 Abr'},
       {'nombre': 'Yogurt', 'fecha': '27 Abr'},
@@ -23,15 +20,12 @@ class Menu extends StatelessWidget {
         title: Text(
           'FreshFood',
           style: GoogleFonts.skranji(
-            textStyle: TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0),
-              fontSize: 28,
-            ),
+            textStyle: const TextStyle(color: Colors.black, fontSize: 28),
           ),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.info),
+            icon: const Icon(Icons.info_outline),
             onPressed: () {
               Navigator.push(
                 context,
@@ -45,42 +39,41 @@ class Menu extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 20), // Espacio inicial
-            // --- CUADRO DE PRODUCTOS POR VENCER ---
+            const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.only(
-                right: 200,
-              ), // Alinea a la izquierda
-              child: Text(
-                'Próximos a vencer',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 0, 0, 0),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Próximos a vencer',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
-
-            const SizedBox(height: 5),
-
+            const SizedBox(height: 10),
             Container(
-              height: 170, // Altura fija para el cuadro
-              width: 360, // Ancho del cuadro
+              height: 170,
+              width: MediaQuery.of(context).size.width * 0.9,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey.shade300),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: Colors.grey.shade200),
                 boxShadow: [
                   BoxShadow(
                     color: const Color.fromARGB(255, 182, 66, 66),
                     blurRadius: 10,
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 15,
+                  vertical: 5,
+                  horizontal: 10,
                 ),
                 itemCount: productosPorVencer.length,
                 itemBuilder: (context, index) {
@@ -88,7 +81,7 @@ class Menu extends StatelessWidget {
                     dense: true,
                     leading: const Icon(
                       Icons.warning_amber_rounded,
-                      color: Color.fromARGB(255, 148, 45, 26),
+                      color: Color(0xFF942D1A),
                     ),
                     title: Text(
                       productosPorVencer[index]['nombre']!,
@@ -97,7 +90,7 @@ class Menu extends StatelessWidget {
                     trailing: Text(
                       productosPorVencer[index]['fecha']!,
                       style: const TextStyle(
-                        color: Color.fromARGB(255, 124, 20, 12),
+                        color: Color(0xFF7C140C),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -105,89 +98,131 @@ class Menu extends StatelessWidget {
                 },
               ),
             ),
+          ],
+        ),
+      ),
 
-            // ---------------------------------------
-            const SizedBox(height: 20),
-
-            //BOTON REFRIGERADOR
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      // --- NUEVA BARRA INFERIOR ---
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
+          ),
+          boxShadow: [
+            BoxShadow(color: Colors.black12, spreadRadius: 0, blurRadius: 10),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
+          ),
+          child: BottomAppBar(
+            height: 70,
+            color: const Color.fromARGB(255, 50, 112, 65),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 40, right: 10),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(10, 40),
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          193,
-                          170,
-                          196,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Refrigerador(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'Refrigerador',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.home_filled,
+                    color: Colors.white,
+                    size: 28,
                   ),
+                  onPressed: () {
+                    // Acción para ir a la pantalla principal
+                  },
                 ),
-
-                //BOTON DESPENSA
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 40),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(20, 40),
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          177,
-                          180,
-                          240,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Despensa(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'Despensa',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.ac_unit,
+                    color: Colors.white70,
+                    size: 28,
                   ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Refrigerador(),
+                      ),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.inventory,
+                    color: Colors.white70,
+                    size: 28,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Despensa()),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.notifications_none,
+                    color: Colors.white70,
+                    size: 28,
+                  ),
+                  onPressed: () {
+                    // Acción para notificaciones
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.person_outline,
+                    color: Colors.white70,
+                    size: 28,
+                  ),
+                  onPressed: () {
+                    // Acción para perfil
+                  },
                 ),
               ],
             ),
-          ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Widget  para personalizar los botones
+  Widget _buildMenuButton(
+    BuildContext context,
+    String text,
+    Color color,
+    Widget page,
+  ) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 15),
+            backgroundColor: color,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            elevation: 2,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => page),
+            );
+          },
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
         ),
       ),
     );
