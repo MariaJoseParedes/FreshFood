@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 255, 255, 255),
           primary: const Color.fromARGB(255, 235, 245, 236),
-          secondary: const Color.fromARGB(255, 241, 253, 242),
+          secondary: const Color.fromARGB(255, 156, 159, 192),
         ),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 243, 255, 248),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 229, 240, 248),
         textTheme: const TextTheme(
           bodyMedium: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
         ),

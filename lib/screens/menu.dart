@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'refrigerador.dart';
 import 'despensa.dart';
-import 'about.dart';
+import '../widgets/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Menu extends StatelessWidget {
@@ -21,55 +21,15 @@ class Menu extends StatelessWidget {
         title: Text(
           'FreshFood',
           style: GoogleFonts.skranji(
-            textStyle: const TextStyle(color: Colors.black, fontSize: 28),
+            textStyle: const TextStyle(
+              color: Color.fromARGB(255, 88, 119, 184),
+              fontSize: 28,
+            ),
           ),
         ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 50, 112, 65),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'assets/images/perfil.jpg',
-                    width: 50,
-                    height: 50,
-                  ),
 
-                  SizedBox(height: 10),
-                  Text(
-                    'Usuario',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Configuración'),
-              onTap: () {
-                // pantalla de configuración
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.info_outline),
-              title: const Text('Acerca de FreshFood'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const About()),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: const CustomDrawer(),
 
       body: Center(
         child: Column(
@@ -82,7 +42,7 @@ class Menu extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Próximos a vencer',
-                  style: const TextStyle(
+                  style: GoogleFonts.skranji(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -127,10 +87,7 @@ class Menu extends StatelessWidget {
                       ),
                       title: Text(
                         producto['nombre']!,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
+                        style: GoogleFonts.skranji(fontSize: 15),
                       ),
                       subtitle: const Text(
                         "Consumir pronto",
@@ -182,10 +139,12 @@ class Menu extends StatelessWidget {
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
+            bottomLeft: Radius.circular(30.0),
+            bottomRight: Radius.circular(30.0),
           ),
           child: BottomAppBar(
             height: 70,
-            color: const Color.fromARGB(255, 50, 112, 65),
+            color: const Color.fromARGB(255, 88, 119, 184),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -217,7 +176,7 @@ class Menu extends StatelessWidget {
                 IconButton(
                   icon: const Icon(
                     Icons.inventory,
-                    color: Colors.white70,
+                    color: Color.fromARGB(179, 255, 255, 255),
                     size: 28,
                   ),
                   onPressed: () {
@@ -235,16 +194,6 @@ class Menu extends StatelessWidget {
                   ),
                   onPressed: () {
                     // Acción para notificaciones
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.person_outline,
-                    color: Colors.white70,
-                    size: 28,
-                  ),
-                  onPressed: () {
-                    // Acción para perfil
                   },
                 ),
               ],
