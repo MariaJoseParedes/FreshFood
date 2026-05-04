@@ -13,6 +13,7 @@ class Menu extends StatelessWidget {
       {'nombre': 'Leche', 'fecha': '26 Abr'},
       {'nombre': 'Yogurt', 'fecha': '27 Abr'},
       {'nombre': 'Jamón', 'fecha': '28 Abr'},
+      {'nombre': 'Queso', 'fecha': '5 mayo'},
     ];
 
     return Scaffold(
@@ -55,49 +56,78 @@ class Menu extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
+
             Container(
-              height: 170,
+              height: 320,
               width: MediaQuery.of(context).size.width * 0.9,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(color: Colors.grey.shade200),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color.fromARGB(255, 182, 66, 66),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
               ),
               child: ListView.builder(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                  horizontal: 10,
-                ),
+                padding: const EdgeInsets.all(10),
                 itemCount: productosPorVencer.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    dense: true,
-                    leading: const Icon(
-                      Icons.warning_amber_rounded,
-                      color: Color(0xFF942D1A),
+                  final producto = productosPorVencer[index];
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 219, 174, 169),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    title: Text(
-                      productosPorVencer[index]['nombre']!,
-                      style: const TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                    trailing: Text(
-                      productosPorVencer[index]['fecha']!,
-                      style: const TextStyle(
-                        color: Color(0xFF7C140C),
-                        fontWeight: FontWeight.bold,
+                    child: ListTile(
+                      dense: true, // Reduce el espacio vertical
+                      leading: Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.timer_outlined,
+                          color: Color(0xFF942D1A),
+                          size: 20,
+                        ),
+                      ),
+                      title: Text(
+                        producto['nombre']!,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      subtitle: const Text(
+                        "Consumir pronto",
+                        style: TextStyle(fontSize: 11),
+                      ),
+                      trailing: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          const Text(
+                            "Vence",
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: Color.fromARGB(255, 41, 41, 41),
+                            ),
+                          ),
+                          Text(
+                            producto['fecha']!,
+                            style: const TextStyle(
+                              color: Color(0xFF7C140C),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   );
                 },
               ),
             ),
+            const SizedBox(height: 30),
           ],
         ),
       ),
