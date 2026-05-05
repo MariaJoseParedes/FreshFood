@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Configuracion extends StatelessWidget {
   const Configuracion({super.key});
@@ -7,12 +8,18 @@ class Configuracion extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Configuración'),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
+          'Configuración',
+          style: GoogleFonts.skranji(
+            textStyle: TextStyle(
+              color: Color.fromARGB(255, 88, 119, 184),
+              fontSize: 28,
+            ),
+          ),
+        ),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      body: Center(
-        child: Text('Pantalla de Configuración'),
-      ),
+      body: Center(child: Text('Pantalla de Configuración')),
     );
   }
 }
