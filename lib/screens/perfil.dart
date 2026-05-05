@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Perfil extends StatelessWidget {
   const Perfil({super.key});
@@ -7,8 +8,17 @@ class Perfil extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mi Perfil'),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
+          'Mi Perfil',
+          style: GoogleFonts.skranji(
+            textStyle: const TextStyle(
+              color: Color.fromARGB(255, 88, 119, 184),
+              fontSize: 28,
+            ),
+          ),
+        ),
+
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: Center(
         child: Column(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'refrigerador.dart';
-import 'despensa.dart';
 import '../widgets/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../widgets/recetas.dart';
+import '../widgets/bottomBar.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -43,15 +43,17 @@ class Menu extends StatelessWidget {
                 child: Text(
                   'Próximos a vencer',
                   style: GoogleFonts.skranji(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
               ),
             ),
+
             const SizedBox(height: 10),
 
+            //const RecetasGrid(),
             Container(
               height: 320,
               width: MediaQuery.of(context).size.width * 0.9,
@@ -120,125 +122,32 @@ class Menu extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Ideas de recetas',
+                  style: GoogleFonts.skranji(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 88, 119, 184),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            //widget para mostrar las recetas
+            const RecetasGrid(),
+
+            const SizedBox(height: 10),
           ],
         ),
       ),
 
-      // --- NUEVA BARRA INFERIOR ---
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30),
-            topLeft: Radius.circular(30),
-          ),
-          boxShadow: [
-            BoxShadow(color: Colors.black12, spreadRadius: 0, blurRadius: 10),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-            bottomLeft: Radius.circular(30.0),
-            bottomRight: Radius.circular(30.0),
-          ),
-          child: BottomAppBar(
-            height: 70,
-            color: const Color.fromARGB(255, 88, 119, 184),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.home_filled,
-                    color: Colors.white,
-                    size: 28,
-                  ),
-                  onPressed: () {
-                    // Acción para ir a la pantalla principal
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.ac_unit,
-                    color: Colors.white70,
-                    size: 28,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Refrigerador(),
-                      ),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.inventory,
-                    color: Color.fromARGB(179, 255, 255, 255),
-                    size: 28,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Despensa()),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.notifications_none,
-                    color: Colors.white70,
-                    size: 28,
-                  ),
-                  onPressed: () {
-                    // Acción para notificaciones
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Widget  para personalizar los botones
-  Widget _buildMenuButton(
-    BuildContext context,
-    String text,
-    Color color,
-    Widget page,
-  ) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 15),
-            backgroundColor: color,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            elevation: 2,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => page),
-            );
-          },
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      ),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }

@@ -1,66 +1,60 @@
 import 'package:flutter/material.dart';
 import '../widgets/producto_tile.dart';
-import '../widgets/producto_dialog.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class Despensa extends StatefulWidget {
+class Despensa extends StatelessWidget {
   const Despensa({super.key});
 
   @override
-  State<Despensa> createState() => _DespensaState();
-}
-
-class _DespensaState extends State<Despensa> {
-  List<Map<String, String>> productos = [
-    {'nombre': 'Arroz', 'fecha': '26 Abr'},
-    {'nombre': 'Atún', 'fecha': '27 Abr'},
-  ];
-
-  // Función única para agregar o editar
-  void _gestionarProducto({int? index}) async {
-    final resultado = await showDialog<Map<String, String>>(
-      context: context,
-      builder: (context) => ProductoDialog(
-        nombreInicial: index != null ? productos[index]['nombre'] : null,
-        fechaInicial: index != null ? productos[index]['fecha'] : null,
-      ),
-    );
-
-    if (resultado != null && resultado['nombre']!.isNotEmpty) {
-      setState(() {
-        if (index == null) {
-          productos.add(resultado);
-        } else {
-          productos[index] = resultado;
-        }
-      });
-    }
-  }
-
-  void _eliminarProducto(int index) {
-    setState(() => productos.removeAt(index));
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final List<Map<String, String>> productos = [
+      {'nombre': 'Arroz', 'fecha': '26 Abr'},
+      {'nombre': 'Tallarines', 'fecha': '27 Abr'},
+      {'nombre': 'Cereal', 'fecha': '28 Abr'},
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mi Despensa'),
-        backgroundColor: Colors.indigo.shade100,
+        title: Text(
+          'Despensa',
+          style: GoogleFonts.skranji(
+            textStyle: const TextStyle(
+              color: Color.fromARGB(255, 88, 119, 184),
+              fontSize: 28,
+            ),
+          ),
+        ),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(10),
-        itemCount: productos.length,
-        itemBuilder: (context, index) {
-          return ProductoTile(
-            nombre: productos[index]['nombre']!,
-            fecha: productos[index]['fecha']!,
-            onEdit: () => _gestionarProducto(index: index),
-            onDelete: () => _eliminarProducto(index),
-          );
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Tus productos',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView.builder(
+                itemCount: productos.length,
+                itemBuilder: (context, index) {
+                  return ProductoTile(
+                    nombre: productos[index]['nombre']!,
+                    fecha: productos[index]['fecha']!,
+                    onEdit: () => {},
+                    onDelete: () => {},
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _gestionarProducto(),
+        onPressed: () => {},
+        backgroundColor: const Color.fromARGB(255, 193, 170, 196),
         child: const Icon(Icons.add),
       ),
     );

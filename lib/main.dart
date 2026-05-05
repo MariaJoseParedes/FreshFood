@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:mi_app/screens/menu.dart';
 //import 'screens/menu.dart';
-import 'screens/abrir_app.dart';
+//import 'screens/abrir_app.dart';
 
 var logger = Logger();
 
@@ -27,10 +28,11 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromARGB(255, 229, 240, 248),
         textTheme: const TextTheme(
           bodyMedium: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+          
         ),
         useMaterial3: true,
       ),
-      home: const LoadingScreen(),
+      home: const Menu(),
     );
   }
 }
